@@ -68,12 +68,10 @@ class App extends Component {
 
   renderHolidaysList = () => {
     const { holidaysData } = this.state
-
-
     return (
       <>
-        {holidaysData.length > 0 ? (<ul className="holidays-list col-12">{holidaysData.map(holiday => (<HolidayCard holidayData={holiday} key={holiday.id} />))}</ul>)
-          : (<><div className='no-holidays'><h1>--No Holidays--</h1></div></>)}
+        {holidaysData.length > 0 ? (<ul className="holidays-list">{holidaysData.map(holiday => (<HolidayCard holidayData={holiday} key={holiday.id} />))}</ul>)
+          : (<><div className='no-holidays-container shadow'><h1 className="no-holidays">---No Holidays---</h1></div></>)}
       </>
     )
   }
@@ -85,15 +83,19 @@ class App extends Component {
   render() {
     const { searchInput } = this.state
     return (
-      <div className="holiday-list-container">
-        <h1 className='heading m-3'>List of Holidays</h1>
+      <div className="app-container container-fluid">
 
-        <div className='query-container d-flex flex-column flex-md-row'>
+        <div className='query-desktop-contianer row d-none d-md-block '>
+          <h1 className='my-3'>Filters</h1>
 
+          <div className='search-container mb-3 '>
+            
+            
+            <input type="search" className='form-control p-2' placeholder='Search Holiday' onChange={this.onChangeSearchInput} value={searchInput}
+             />
+          </div>
 
-          
-
-          <div className='select-container '>
+          <div className='select-container mb-3 '>
             <label htmlFor="months" className='p-2'> Search by Month</label>
 
             <select id="months" defaultValue={'DEFAULT'} className="form-select" onChange={(e) => this.onChangeSelectInput(e.target.value)}>
@@ -113,11 +115,9 @@ class App extends Component {
             </select>
           </div>
 
-          <div className='search-container'>
-            <input type="search" className='form-control p-2' placeholder='Search Holiday' onChange={this.onChangeSearchInput} value={searchInput} />
-          </div>
 
-          <div className='d-flex flex-row'>
+
+          <div className='mt-3 d-flex flex-row'>
             <div>
               <input type="checkbox" id="global" onChange={(e) => this.handleCheckbox(e.target.checked, "global")} />
               <label htmlFor="global" className='p-2'> Global</label>
@@ -130,18 +130,69 @@ class App extends Component {
           </div>
 
 
-
-
-
         </div>
 
-        <div className='container'>
-          <div className='row'>
-            {this.renderHolidaysList()}
+
+        <div className='holidays-app-container'>
+
+          <h1 className='heading m-3'>List of Holidays</h1>
+
+          <div className='d-flex flex-column row d-md-none d-block '>
+            <h1>Filters</h1>
+
+            <div className='search-container my-5-md '>
+              <input type="search" className='form-control p-2' placeholder='Search Holiday' onChange={this.onChangeSearchInput} value={searchInput} />
+            </div>
+
+            <div className='select-container my-5-md '>
+              <label htmlFor="months" className='p-2'> Search by Month</label>
+
+              <select id="months" defaultValue={'DEFAULT'} className="form-select" onChange={(e) => this.onChangeSelectInput(e.target.value)}>
+                <option value="DEFAULT" disabled hidden>Select an Option</option>
+                <option value="0">January</option>
+                <option value="1">February </option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June </option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October </option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+              </select>
+            </div>
+
+
+
+            <div className='my-3-md d-flex flex-row'>
+              <div>
+                <input type="checkbox" id="global" onChange={(e) => this.handleCheckbox(e.target.checked, "global")} />
+                <label htmlFor="global" className='p-2'> Global</label>
+              </div>
+              <div>
+                <input type="checkbox" id="fixed" onChange={(e) => this.handleCheckbox(e.target.checked, "fixed")} />
+                <label htmlFor="fixed" className='p-2'> Fixed</label>
+              </div>
+
+            </div>
+
 
           </div>
 
+
+          {this.renderHolidaysList()}
+
+
+
+
+
+
+
         </div>
+
+
 
 
       </div>

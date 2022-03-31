@@ -1,34 +1,67 @@
 .App {
   text-align: center;
- 
+
 }
 
-.holiday-list-container{
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  font-family: "Roboto";
-  
-}
-.query-container{
+.app-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-}
-.heading{
-  font-family:"Roboto";
-  text-align: center;
-}
-
-.holidays-list{
-  list-style-type: none;
-}
+  min-height: 100vh;
+  font-family: "Roboto";
+  background-color: #861657;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
 
 
-.no-holidays{
+}
+
+.holidays-app-container {
+  width: 70%;
   display: flex;
-  justify-content:center;
+  flex-direction: column;
+}
+
+.query-desktop-contianer {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #6b0f1a;
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+
+}
+
+.heading {
+  font-family: "Roboto";
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color:#b91372;
+}
+
+.holidays-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.no-holidays-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  font-family:"Roboto";
-  padding: 100px;
+  margin: 50px;
+
+  height: 200px;
+  overflow: hidden;
+  width: 100%;
+  background-color: #6b0f1a;
+  background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+
+
+}
+
+.no-holidays {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: azure;
+
 }
